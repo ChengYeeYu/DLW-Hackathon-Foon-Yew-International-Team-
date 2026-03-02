@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LockedIn Buddy</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>LockedIn Buddy</h1>
+        <button id="openOptionsBtn" class="link-btn" type="button">Settings</button>
+      </header>
+
+      <p class="subtitle">Summarize this tab and generate a quiz.</p>
+
+      <section class="controls">
+        <button id="summarizeBtn" class="primary" type="button">Summarize Tab</button>
+        <button id="quizBtn" class="secondary" type="button">Generate Quiz</button>
+        <button id="clearBtn" class="ghost" type="button">Clear</button>
+      </section>
+
+      <p id="status" class="status"></p>
+      <section id="output" class="output"></section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

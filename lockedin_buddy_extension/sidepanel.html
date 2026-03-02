@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LockedIn Buddy Sidebar</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <h1>LockedIn Buddy</h1>
+          <p class="subtitle">Summarize, quiz, and build a mindmap from your topic.</p>
+        </div>
+        <button id="openOptionsBtn" class="link-btn" type="button">Settings</button>
+      </header>
+
+      <section class="carousel-nav" aria-label="Sidebar pages">
+        <button id="carouselPrevBtn" class="ghost carousel-arrow" type="button" aria-label="Previous page">
+          &lt;
+        </button>
+        <div class="carousel-dots" role="tablist" aria-label="Choose page">
+          <button
+            id="carouselStudyBtn"
+            class="carousel-dot active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="studyPage"
+          >
+            Study
+          </button>
+          <button
+            id="carouselFocusBtn"
+            class="carousel-dot"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="focusPage"
+          >
+            Pomodoro
+          </button>
+          <button
+            id="carouselAnalyticsBtn"
+            class="carousel-dot"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="analyticsPage"
+          >
+            Analytics
+          </button>
+        </div>
+        <button id="carouselNextBtn" class="ghost carousel-arrow" type="button" aria-label="Next page">
+          &gt;
+        </button>
+      </section>
+
+      <section id="carouselViewport" class="carousel-viewport" aria-live="polite">
+        <div id="carouselTrack" class="carousel-track">
+          <section id="studyPage" class="carousel-page" aria-hidden="false">
+            <section class="explain-mode-strip" aria-label="Explain style">
+              <label for="explainModeSelect" class="explain-mode-label">Explain like</label>
+              <select id="explainModeSelect" class="explain-mode-select">
+                <option value="student" selected>Balanced student mode</option>
+                <option value="beginner">Beginner friendly</option>
+                <option value="exam">Exam focused</option>
+                <option value="analogy">Analogy mode</option>
+                <option value="mnemonic">Mnemonic mode</option>
+              </select>
+            </section>
+
+            <section id="topControls" class="controls">
+              <button id="summarizeBtn" class="primary" type="button">Summarize Tab</button>
+              <button id="quizBtn" class="secondary" type="button">Generate Quiz</button>
+              <button id="mindmapBtn" class="tertiary" type="button">Create Mindmap</button>
+              <button id="clearBtn" class="ghost" type="button">Clear</button>
+            </section>
+
+            <section id="selectionBox" class="selection-box">
+              <div class="selection-header">
+                <h2>Highlight Assistant</h2>
+              </div>
+              <p id="selectionHint" class="selection-hint">
+                Highlight text on the webpage to ask about it.
+              </p>
+              <div id="selectionPromptArea" class="selection-prompt-area hidden">
+                <div id="selectionPreview" class="selection-preview empty">No highlighted text yet.</div>
+                <label class="selection-label" for="selectionPromptInput">Ask about this highlight</label>
+                <textarea
+                  id="selectionPromptInput"
+                  class="selection-input"
+                  rows="3"
+                  placeholder="Example: Explain this in simpler terms and give one example."
+                ></textarea>
+                <div class="selection-actions">
+                  <button id="explainSelectionBtn" class="primary" type="button">Ask Your Buddy</button>
+                  <button id="summarizeHighlightedBtn" class="secondary" type="button">
+                    Summarize
+                  </button>
+                  <button id="quizHighlightedBtn" class="secondary" type="button">
+                    Generate Quiz
+                  </button>
+                  <button id="mindmapHighlightedBtn" class="tertiary" type="button">
+                    Create Mindmap
+                  </button>
+                  <button id="clearHighlightedBtn" class="ghost" type="button">Clear</button>
+                </div>
+              </div>
+            </section>
+
+            <p id="status" class="status"></p>
+            <section id="output" class="output"></section>
+          </section>
+
+          <section id="focusPage" class="carousel-page" aria-hidden="true">
+            <section id="focusSessionBox" class="focus-box">
+              <div class="focus-header">
+                <h2>Focus Session</h2>
+              </div>
+              <div class="focus-content">
+              <p class="focus-subtitle">
+                Pomodoro + optional camera-based attention check. All processing stays on your device.
+              </p>
+
+              <div class="focus-config">
+                <label for="focusDurationInput">Focus Minutes</label>
+                <input id="focusDurationInput" type="number" min="0.5" max="240" step="0.5" value="25" />
+                <label for="reminderDelayInput">Reminder After (seconds)</label>
+                <input id="reminderDelayInput" type="number" min="5" max="120" value="20" />
+              </div>
+              <label class="focus-cycle-toggle" for="headTrackingToggle">
+                <input id="headTrackingToggle" type="checkbox" checked />
+                Use head tracking reminders
+              </label>
+              <label class="focus-cycle-toggle" for="cycleModeToggle">
+                <input id="cycleModeToggle" type="checkbox" />
+                Enable focus/rest cycles
+              </label>
+              <div id="cycleConfig" class="focus-config cycle-config hidden">
+                <label for="restDurationInput">Rest Minutes</label>
+                <input id="restDurationInput" type="number" min="0.5" max="120" step="0.5" value="5" />
+                <label for="cycleCountInput">Cycles</label>
+                <input id="cycleCountInput" type="number" min="1" max="24" step="1" value="4" />
+              </div>
+
+              <div class="focus-controls">
+                <button id="startFocusBtn" class="primary" type="button">Start Focus Session</button>
+                <button id="stopFocusBtn" class="ghost" type="button" disabled>Stop Session</button>
+              </div>
+
+              <div class="focus-status-row">
+                <div id="focusTimer" class="focus-timer">25:00</div>
+                <div id="focusState" class="focus-state idle">Idle</div>
+              </div>
+
+              <div id="focusReminderBanner" class="focus-reminder hidden" role="alert" aria-live="assertive">
+                Gentle reminder: return your focus to the study session.
+              </div>
+
+              <video id="focusVideo" class="focus-video hidden" autoplay muted playsinline></video>
+              <p id="focusHint" class="focus-hint">
+                Start a session to enable camera-based focus reminders.
+              </p>
+              <div class="focus-debug">
+                <p id="focusDetectorStatus" class="focus-debug-line">Detector: Unknown</p>
+                <p id="focusLastCheck" class="focus-debug-line">Last check: Not started</p>
+              </div>
+              </div>
+            </section>
+          </section>
+
+          <section id="analyticsPage" class="carousel-page" aria-hidden="true">
+            <section class="analytics-box">
+              <div class="analytics-header">
+                <h2>Learning Analytics Dashboard</h2>
+                <button id="resetAnalyticsBtn" class="ghost analytics-reset-btn" type="button">Reset</button>
+              </div>
+              <p class="analytics-subtitle">
+                Track study output, quiz performance, focus consistency, and recent learning activity.
+              </p>
+              <div id="analyticsContent" class="analytics-content"></div>
+            </section>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

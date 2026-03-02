@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+  background: #f1f5f9;
+}
+
+.container {
+  max-width: 720px;
+  margin: 24px auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+h1 {
+  margin: 0 0 6px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+p {
+  color: #475569;
+}
+
+.settings-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 12px;
+  margin-top: 14px;
+}
+
+.helper {
+  margin-top: 0;
+  font-size: 0.88rem;
+}
+
+label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #1f2937;
+  background: #ffffff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.palette-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #d6deea;
+  border-radius: 8px;
+  background: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.palette-option input {
+  width: auto;
+  margin: 0;
+}
+
+.palette-chip {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 1px solid #94a3b8;
+}
+
+.palette-sky {
+  background: linear-gradient(180deg, #c6d7ee 0%, #b5c9e7 100%);
+}
+
+.palette-mint {
+  background: linear-gradient(180deg, #c7e7dd 0%, #b6dccf 100%);
+}
+
+.palette-lavender {
+  background: linear-gradient(180deg, #d9d3f4 0%, #c9c2ec 100%);
+}
+
+.palette-peach {
+  background: linear-gradient(180deg, #f3d6cb 0%, #eac3b5 100%);
+}
+
+.palette-sand {
+  background: linear-gradient(180deg, #ecdcbf 0%, #e1cfad 100%);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.footer-actions {
+  margin-top: 14px;
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #ffffff;
+  background: #0ea5e9;
+}
+
+.ghost {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.status {
+  min-height: 18px;
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.status.error {
+  color: #b91c1c;
+}
+
+.status.success {
+  color: #15803d;
+}

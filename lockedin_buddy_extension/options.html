@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LockedIn Buddy Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>LockedIn Buddy Settings</h1>
+      <p>Configure API, appearance, and user feedback flow.</p>
+
+      <section class="settings-card">
+        <h2>API</h2>
+        <label for="apiKeyInput">OpenAI API Key</label>
+        <input
+          id="apiKeyInput"
+          type="password"
+          placeholder="sk-..."
+          autocomplete="off"
+        />
+
+        <label for="modelInput">Model</label>
+        <input id="modelInput" type="text" placeholder="gpt-5-mini" />
+
+        <div class="buttons">
+          <button id="saveBtn" type="button">Save Settings</button>
+          <button id="clearBtn" type="button" class="ghost">Clear Key</button>
+        </div>
+      </section>
+
+      <section class="settings-card">
+        <h2>Appearance</h2>
+        <label for="colorModeSelect">Color mode</label>
+        <select id="colorModeSelect">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="system">System default</option>
+        </select>
+
+        <label>Background palette</label>
+        <div class="palette-grid" role="radiogroup" aria-label="Background palette">
+          <label class="palette-option">
+            <input type="radio" name="backgroundPalette" value="sky" />
+            <span class="palette-chip palette-sky"></span>
+            Sky
+          </label>
+          <label class="palette-option">
+            <input type="radio" name="backgroundPalette" value="mint" />
+            <span class="palette-chip palette-mint"></span>
+            Mint
+          </label>
+          <label class="palette-option">
+            <input type="radio" name="backgroundPalette" value="lavender" />
+            <span class="palette-chip palette-lavender"></span>
+            Lavender
+          </label>
+          <label class="palette-option">
+            <input type="radio" name="backgroundPalette" value="peach" />
+            <span class="palette-chip palette-peach"></span>
+            Peach
+          </label>
+          <label class="palette-option">
+            <input type="radio" name="backgroundPalette" value="sand" />
+            <span class="palette-chip palette-sand"></span>
+            Sand
+          </label>
+        </div>
+      </section>
+
+      <section class="settings-card">
+        <h2>Feedback</h2>
+        <p class="helper">Feedback opens your default mail app and drafts an email to your address.</p>
+
+        <label for="feedbackToEmailInput">Receive feedback at</label>
+        <input
+          id="feedbackToEmailInput"
+          type="email"
+          placeholder="your-email@example.com"
+          autocomplete="off"
+        />
+
+        <label for="feedbackFromInput">User email (optional)</label>
+        <input
+          id="feedbackFromInput"
+          type="email"
+          placeholder="student@example.com"
+          autocomplete="off"
+        />
+
+        <label for="feedbackMessageInput">Feedback message</label>
+        <textarea
+          id="feedbackMessageInput"
+          rows="4"
+          placeholder="Tell us what worked and what should be improved..."
+        ></textarea>
+
+        <div class="buttons">
+          <button id="sendFeedbackBtn" type="button">Email Feedback</button>
+        </div>
+      </section>
+
+      <div class="buttons footer-actions">
+        <button id="saveAppearanceBtn" type="button">Save Appearance & Feedback Settings</button>
+      </div>
+
+      <p id="status" class="status"></p>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>
